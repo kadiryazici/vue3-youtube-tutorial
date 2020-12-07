@@ -1,30 +1,32 @@
-<template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+<template inherit-attrs="true">
+   BU DA VIERONE.VUE DOSYASIDIR
+   <VieroneComponent
+      @update="$log($event)"
+      @close="testFunction($event)"
+      @noArgument="$log($event)"
+      @hi="$log($event)"
+      :msg="'bruh'"
+   >
+      MERHABALAR BU VERİ SANA GELDİ BU DA A: {{ a }}
+      <button @click="setA('sleamlar güzellik')">Set A</button>
+      <template #header>
+         hepsiburada rezaleti
+      </template>
+
+      <template #footer>yazar: vierone 1saat önce</template>
+   </VieroneComponent>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script lang="ts" setup>
+import { ref, getCurrentInstance } from 'vue';
+import VieroneComponent, { a, setA } from '@/components/Vierone.vue';
+
+const msg = ref('Bu vierone componentinden bir değerdir.');
+function testFunction<T>(e: T) {
+   console.log(e);
 }
+const instance = getCurrentInstance()!;
+console.log(instance.appContext.config.globalProperties.$log);
+</script>
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>
