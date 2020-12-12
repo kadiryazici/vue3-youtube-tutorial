@@ -1,10 +1,24 @@
 <template>
    <div>
       app vue
+      <IconVue :name="'home'" />
    </div>
 </template>
 <script lang="ts" setup>
-import IconVue from './components/Icon.vue';-
+import { defineAsyncComponent } from 'vue';
+import IconVue from './components/Icon.vue';
+
+const maPromise = () =>
+   new Promise<void>((resolve) => {
+      setTimeout(() => {
+         resolve();
+      }, 3000);
+   });
+
+// const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+// const json = await res.json();
+await maPromise();
+console.log('component did mount');
 </script>
 
 <style lang="scss">
