@@ -1,32 +1,13 @@
-<template inherit-attrs="true">
-   BU DA VIERONE.VUE DOSYASIDIR
-   <VieroneComponent
-      @update="$log($event)"
-      @close="testFunction($event)"
-      @noArgument="$log($event)"
-      @hi="$log($event)"
-      :msg="'bruh'"
-   >
-      MERHABALAR BU VERİ SANA GELDİ BU DA A: {{ a }}
-      <button @click="setA('sleamlar güzellik')">Set A</button>
-      <template #header>
-         hepsiburada rezaleti
-      </template>
-
-      <template #footer>yazar: vierone 1saat önce</template>
-   </VieroneComponent>
+<template>
+   <div>
+      app vue
+   </div>
 </template>
-
 <script lang="ts" setup>
-import { ref, getCurrentInstance } from 'vue';
-import VieroneComponent, { a, setA } from '@/components/Vierone.vue';
-
-const msg = ref('Bu vierone componentinden bir değerdir.');
-function testFunction<T>(e: T) {
-   console.log(e);
-}
-const instance = getCurrentInstance()!;
-console.log(instance.appContext.config.globalProperties.$log);
+import IconVue from './components/Icon.vue';-
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+</style>
